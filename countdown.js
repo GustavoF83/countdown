@@ -1,5 +1,5 @@
 const getRemainingTime = (deadline) => {
-  let now = new Date(),
+  const now = new Date(),
     remainTime = (new Date(deadline) - now + 1000) / 1000,
     remainSeconds = ("0" + Math.floor(remainTime % 60)).slice(-2),
     remainMinutes = ("0" + Math.floor((remainTime / 60) % 60)).slice(-2),
@@ -19,7 +19,7 @@ const countdown = (deadline, elem, finalMessage) => {
   const el = document.getElementById(elem);
 
   const timerUpdate = setInterval(() => {
-    let t = getRemainingTime(deadline);
+    const t = getRemainingTime(deadline);
     el.innerHTML = `${t.remainDays}d:${t.remainHours}h:${t.remainMinutes}m:${t.remainSeconds}s`;
 
     if (t.remainTime <= 1) {
@@ -29,7 +29,7 @@ const countdown = (deadline, elem, finalMessage) => {
   }, 1000);
 };
 
-function convertir() {
-  let fechaPura = document.getElementsByName("texto")[0].value;
+const convertir = () => {
+  const fechaPura = document.getElementsByName("texto")[0].value;
   countdown(fechaPura, "clock", "¡EL CONTEO HA FINALIZADO!");
-}
+};
