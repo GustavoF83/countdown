@@ -16,15 +16,22 @@ const getRemainingTime = (deadline) => {
 };
 
 const countdown = (deadline, elem, finalMessage) => {
-  const el = document.getElementById(elem);
+  const countdownLabel = document.getElementById(elem);
 
   const timerUpdate = setInterval(() => {
-    const t = getRemainingTime(deadline);
-    el.innerHTML = `${t.remainDays}d:${t.remainHours}h:${t.remainMinutes}m:${t.remainSeconds}s`;
+    const remainTimeValues = getRemainingTime(deadline);
+    const {
+      remainDays,
+      remainHours,
+      remainMinutes,
+      remainSeconds,
+      remainTime,
+    } = remainTimeValues;
+    countdownLabel.innerHTML = `${remainDays}d:${remainHours}h:${remainMinutes}m:${remainSeconds}s`;
 
-    if (t.remainTime <= 1) {
+    if (remainTime <= 1) {
       clearInterval(timerUpdate);
-      el.innerHTML = finalMessage;
+      countdownLabel.innerHTML = finalMessage;
     }
   }, 1000);
 };
