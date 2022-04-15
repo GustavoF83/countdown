@@ -38,5 +38,9 @@ const countdown = (deadline, elem, finalMessage) => {
 
 const convertir = () => {
   const fechaPura = document.getElementsByName("texto")[0].value;
-  countdown(fechaPura, "clock", "¡EL CONTEO HA FINALIZADO!");
+  if (fechaPura) {
+    countdown(fechaPura, "clock", "¡EL CONTEO HA FINALIZADO!");
+  } else {
+    alert("No has introducido ninguna fecha");
+  }
 };
