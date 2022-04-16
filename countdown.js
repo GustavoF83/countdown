@@ -1,39 +1,46 @@
-const getRemainingTime = deadline => {
-    let now = new Date(),
-        remainTime = (new Date(deadline) - now + 1000) / 1000,
-        remainSeconds = ('0' + Math.floor(remainTime % 60)).slice(-2),
-        remainMinutes = ('0' + Math.floor(remainTime / 60 % 60)).slice(-2),
-        remainHours = ('0' + Math.floor(remainTime / 3600 % 24)).slice(-2),
-        remainDays = Math.floor(remainTime / (3600 * 24));
-  
-    return {
-      remainSeconds,
-      remainMinutes,
-      remainHours,
+const getRemainingTime = (deadline) => {
+  const now = new Date(),
+    remainTime = (new Date(deadline) - now + 1000) / 1000,
+    remainSeconds = ("0" + Math.floor(remainTime % 60)).slice(-2),
+    remainMinutes = ("0" + Math.floor((remainTime / 60) % 60)).slice(-2),
+    remainHours = ("0" + Math.floor((remainTime / 3600) % 24)).slice(-2),
+    remainDays = Math.floor(remainTime / (3600 * 24));
+
+  return {
+    remainSeconds,
+    remainMinutes,
+    remainHours,
+    remainDays,
+    remainTime,
+  };
+};
+
+const countdown = (deadline, elem, finalMessage) => {
+  const countdownLabel = document.getElementById(elem);
+
+  const timerUpdate = setInterval(() => {
+    const remainTimeValues = getRemainingTime(deadline);
+    const {
       remainDays,
-      remainTime
+      remainHours,
+      remainMinutes,
+      remainSeconds,
+      remainTime,
+    } = remainTimeValues;
+    countdownLabel.innerHTML = `${remainDays}d:${remainHours}h:${remainMinutes}m:${remainSeconds}s`;
+
+    if (remainTime <= 1) {
+      clearInterval(timerUpdate);
+      countdownLabel.innerHTML = finalMessage;
     }
-  };
-  
-  const countdown = (deadline,elem,finalMessage) => {
-    const el = document.getElementById(elem);
-  
-    const timerUpdate = setInterval( () => {
-      let t = getRemainingTime(deadline);
-      el.innerHTML = `${t.remainDays}d:${t.remainHours}h:${t.remainMinutes}m:${t.remainSeconds}s`;
-  
-      if(t.remainTime <= 1) {
-        clearInterval(timerUpdate);
-        el.innerHTML = finalMessage;
-      }
-  
-    }, 1000)
-  };
- 
-  function convertir (){
-      let fechaPura= document.getElementsByName('texto')[0].value;
-      countdown(fechaPura, 'clock', '¡EL CONTEO HA FINALIZADO!');
+  }, 1000);
+};
+
+const convertir = () => {
+  const fechaPura = document.getElementsByName("texto")[0].value;
+  if (fechaPura) {
+    countdown(fechaPura, "clock", "¡EL CONTEO HA FINALIZADO!");
+  } else {
+    alert("No has introducido ninguna fecha");
   }
-
-
-  
+};

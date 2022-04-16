@@ -1,37 +1,39 @@
-:root{
-    --font:'Audiowide', cursive;
+:root {
+  --font: "Audiowide", cursive;
 }
 
 body {
-    background-color: rgb(51, 41, 77);
-    font-family: var(--font);
-    color: aliceblue;
-    background-image: url("galaxy.png");
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-color: rgb(51, 41, 77);
+  font-family: var(--font);
+  color: aliceblue;
+  background-image: url("galaxy.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
 }
 
 h1 {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .fecha {
-    font-size: 20px;
-    border-radius: 6px;
+  font-size: 20px;
+  border-radius: 6px;
 }
 
 .button {
-    font-family: var(--font);
-    font-size: 20px;
-    border-radius: 6px;
+  font-family: var(--font);
+  font-size: 20px;
+  border-radius: 6px;
 }
 
 #clock {
-    font-size: 5em;
-    text-align: center;
-    margin: 1em;
-    background-color: white;
-    font-family: 'Share Tech Mono', monospace;
-    color: black;
-  }
+  font-size: 5em;
+  text-align: center;
+  margin: 1em;
+  background-color: white;
+  font-family: "Share Tech Mono", monospace;
+  color: black;
+}
